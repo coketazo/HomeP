@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Write-Up</title>
-
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -24,22 +23,28 @@
     </nav>
     <div class="container">
         <section id="about" class="content">
-            {{ sections.section1|safe }}
+            <!--About_Us.md-->
+            {{ sections.section0|safe }}
         </section>
         <section id="events" class="content">
-            {{ sections.section2|safe }}
+            <!--Events.md-->
+            {{ sections.section1|safe }}
         </section>
         <section id="member" class="content">
-            {{ sections.section3|safe }}
+            <!--Member.md-->
+            {{ sections.section2|safe }}
         </section>
         <section id="blog" class="content">
-            {{ sections.section4|safe }}
+            <!--Blog.md-->
+            {{ sections.section3|safe }}
         </section>
         <section id="resources" class="content">
-            {{ sections.section5|safe }}
+            <!--Resources.md-->
+            {{ sections.section4|safe }}
         </section>
         <section id="contact" class="content">
-            {{ sections.section6|safe }}
+            <!--Contact.md-->
+            {{ sections.section5|safe }}
         </section>
     </div>
 

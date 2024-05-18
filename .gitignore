@@ -1,0 +1,12 @@
+# instance에는 민감한 정보인 db가 들어갑니다
+instance/
+
+# venv는 사용자의 환경에 따라 달라질수있습니다
+venv/
+
+# 테스트용 파일
+tmp.py
+
+# etc.
+*.log
+*.tmp
