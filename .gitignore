@@ -4,6 +4,9 @@ instance/
 # venv는 사용자의 환경에 따라 달라질수있습니다
 venv/
 
+# __pycache__를 정리하는 편이 깔끔합니다
+__pycache__/
+
 # 테스트용 파일
 tmp.py
 
