@@ -8,11 +8,7 @@ login_manager = LoginManager()
 
 
 def create_app():
-    app = Flask(
-        __name__,
-        template_folder=Config.TEMPLATE_FOLDER,
-        static_folder=Config.STATIC_FOLDER,
-    )
+    app = Flask(__name__)
     app.config.from_object(Config)
 
     db.init_app(app)

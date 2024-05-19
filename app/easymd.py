@@ -14,8 +14,14 @@ def markdown_to_html(md_file_path) -> str:
 
 # route 이름을 입력하면 그 template에 쓰이는 md파일 리스트를 찾아서 html로 번역한 dict를 리턴합니다
 def markdown_files_to_html_dict(name) -> dict:
-    # 기본 md파일 디렉토리 / name /
-    md_dir = "./static/md/" + name + "/"
+    # 현재 파일의 디렉토리 경로를 얻습니다.
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    # static 디렉토리의 경로를 결합하여 전체 경로를 얻습니다.
+    static_dir = os.path.join(current_dir, "static")
+    # name 디렉토리의 경로를 결합하여 전체 경로를 얻습니다.
+    md_dir = os.path.join(static_dir, "md", name) + "/"
+    # md_dir == "static/md/<name>/"
+
     # 디렉토리 안의 파일 리스트
     md_file_list = os.listdir(md_dir)
     # list -> dict
