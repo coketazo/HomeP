@@ -1,3 +1,6 @@
+# 사용자의 계정을 관리합니다
+# db는 <project_name>/instance/site.db 에 생성됩니다
+# 비밀번호는 sha:256으로 암호화 합니다
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from . import db
 from .models import User
@@ -8,6 +11,7 @@ from . import login_manager
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 
 
+# IMPORTANT
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -32,6 +36,7 @@ def login():
             login_user(user)
             return redirect(next)
         else:
+            print("failed login")
             flash("로그인 실패하였습니다. 이메일과 비밀번호를 다시 확인해주세요.")
     return render_template("login.html", next=next)
 

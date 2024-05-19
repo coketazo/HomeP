@@ -1,3 +1,4 @@
+# 사용자 계정, 등의 모델을 관리합니다
 from . import db
 from flask_login import UserMixin
 

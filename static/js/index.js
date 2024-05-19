@@ -1,7 +1,9 @@
-const sections = document.querySelectorAll('.content');
-
+// 현재 보고있는 section 사이드바 하이라이트
 window.addEventListener('scroll', () => {
+	const sections = document.querySelectorAll('.content');
 	let currentSectionId = '';
+
+	// 스크롤 위치에 따라 현재 섹션을 식별
 	sections.forEach(section => {
 		const sectionTop = section.offsetTop;
 		const sectionHeight = section.clientHeight;
@@ -12,7 +14,8 @@ window.addEventListener('scroll', () => {
 		}
 	});
 
-	const navLinks = document.querySelectorAll('nav a');
+	// 현재 섹션의 링크에 active 클래스 추가
+	const navLinks = document.querySelectorAll('.sidebar-nav a');
 	navLinks.forEach(link => {
 		link.classList.remove('active');
 		if (link.getAttribute('href').substring(1) === currentSectionId) {
@@ -21,7 +24,9 @@ window.addEventListener('scroll', () => {
 	});
 });
 
-document.querySelectorAll('nav a').forEach(anchor => {
+
+// 사이드바 클릭시 부드러운 스크롤
+document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
 	anchor.addEventListener('click', function (e) {
 		e.preventDefault();
 

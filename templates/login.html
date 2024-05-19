@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,9 +20,10 @@
 	</ul>
 	{% endif %}
 	{% endwith %}
-	<form method="POST" action="{{ url_for('auth.login') }}">
-		<input type="email" name="email" placeholder="Email" required autocomplete="email">
-		<input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+	<form id="loginForm" method="POST" action="{{ url_for('auth.login') }}">
+		<input type="email" name="email" id="email" placeholder="Email" required autocomplete="email">
+		<input type="password" name="password" id="password" placeholder="Password" required
+			autocomplete="current-password">
 		<button type="submit">Login</button>
 	</form>
 	<a href="{{ url_for('auth.register') }}">계정이 없다면, 회원가입하세요</a>

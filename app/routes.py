@@ -1,3 +1,4 @@
+# 페이지들의 route를 관리합니다
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 from .easymd import markdown_files_to_html_dict
