@@ -85,7 +85,7 @@ HomeP/
 4. 애플리케이션을 실행합니다.
 
    ```
-   $ python3 run.py
+   $ flask run
    ```
 
 5. 웹 브라우저에서 `http://localhost:5000`을 열어 애플리케이션을 확인합니다.
