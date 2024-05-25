@@ -16,44 +16,6 @@ HomeP는 write-up 동아리의 개발 중인 홈페이지 프로젝트입니다.
 - Markdown: 페이지 내용 작성을 위한 경량 마크업 언어
 - HTML, CSS, JavaScript: 웹 프론트엔드 디자인 및 동작 구현
 
-### 프로젝트 구조
-
-```
-HomeP/
-│
-├── app/
-│   ├── __init__.py
-│   ├── auth.py
-│   ├── easymd.py
-│   ├── models.py
-│   ├── routes.py
-│   ├── static/
-│   │   ├── css/
-│   │   │   └── style.css
-│   │   ├── js/
-│   │   │   └── index.js
-│   │   └── md/
-│   │       ├── index/
-│   │       │   ├── section0_About_Us.md
-│   │       │   ├── section1_Events.md
-│   │       │   ├── section2_Member.md
-│   │       │   ├── section3_Blog.md
-│   │       │   ├── section4_Resources.md
-│   │       │   └── section5_Contact.md
-│   │       └── tmp/
-│   └── templates/
-│       ├── index.html
-│       ├── login.html
-│       ├── profile.html
-│       └── register.html
-│
-├── .gitignore
-├── config.py
-├── run.py
-├── README.md
-└── requirements.txt
-```
-
 ### 설치 및 실행
 
 1. Git 저장소를 클론합니다.
