@@ -1,69 +1,62 @@
-<!DOCTYPE html>
-<html lang="ko">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Write-Up</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+{% block title %}Write-Up{% endblock %}
 
-<body>
-    <header>
-        <h1>Welcome to Write-Up</h1>
-        <!-- 상단 네비게이션 메뉴 -->
-        <nav class="top-nav">
-            <a href="{{ url_for('main.index') }}">Home</a>
-            <a href="{{ url_for('main.profile') }}">Profile</a>
-            {% if current_user.is_authenticated %}
-            <a href="{{ url_for('auth.logout') }}">Logout</a>
-            {% else %}
-            <a href="{{ url_for('auth.login') }}">Login</a>
-            <a href="{{ url_for('auth.register') }}">Register</a>
-            {% endif %}
-        </nav>
-    </header>
+{% block content %}
 
-    <!-- 사이드바 네비게이션 메뉴 -->
-    <nav class="sidebar-nav">
-        <a href="#about">About Us</a><br>
-        <a href="#events">Events</a><br>
-        <a href="#member">Member</a><br>
-        <a href="#blog">Blog</a><br>
-        <a href="#resources">Resources</a><br>
-        <a href="#contact">Contact</a>
+<header>
+    <h1>Welcome to Write-Up</h1>
+    <!-- 상단 네비게이션 메뉴 -->
+    <nav class="top-nav">
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('main.profile') }}">Profile</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+        <a href="{{ url_for('auth.login') }}">Login</a>
+        <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
     </nav>
+</header>
 
-    <div class="container">
-        <section id="about" class="content">
-            <!--About_Us.md-->
-            {{ sections.section0|safe }}
-        </section>
-        <section id="events" class="content">
-            <!--Events.md-->
-            {{ sections.section1|safe }}
-        </section>
-        <section id="member" class="content">
-            <!--Member.md-->
-            {{ sections.section2|safe }}
-        </section>
-        <section id="blog" class="content">
-            <!--Blog.md-->
-            {{ sections.section3|safe }}
-        </section>
-        <section id="resources" class="content">
-            <!--Resources.md-->
-            {{ sections.section4|safe }}
-        </section>
-        <section id="contact" class="content">
-            <!--Contact.md-->
-            {{ sections.section5|safe }}
-        </section>
-    </div>
+<!-- 사이드바 네비게이션 메뉴 -->
+<nav class="sidebar-nav">
+    <a href="#about">About Us</a><br>
+    <a href="#events">Events</a><br>
+    <a href="#member">Member</a><br>
+    <a href="#blog">Blog</a><br>
+    <a href="#resources">Resources</a><br>
+    <a href="#contact">Contact</a>
+</nav>
 
-    <!-- JS -->
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-</body>
+<div class="container">
+    <section id="about" class="content">
+        <!--About_Us.md-->
+        {{ sections.section0|safe }}
+    </section>
+    <section id="events" class="content">
+        <!--Events.md-->
+        {{ sections.section1|safe }}
+    </section>
+    <section id="member" class="content">
+        <!--Member.md-->
+        {{ sections.section2|safe }}
+    </section>
+    <section id="blog" class="content">
+        <!--Blog.md-->
+        {{ sections.section3|safe }}
+    </section>
+    <section id="resources" class="content">
+        <!--Resources.md-->
+        {{ sections.section4|safe }}
+    </section>
+    <section id="contact" class="content">
+        <!--Contact.md-->
+        {{ sections.section5|safe }}
+    </section>
+</div>
 
-</html>
+<!-- JS -->
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+{% endblock %}

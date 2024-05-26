@@ -1,15 +1,9 @@
-<!doctype html>
-<html>
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
 
-<head>
-	<title>Profile</title>
-	<!-- CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+{% block content %}
 
-<body>
-	<h1>Welcome, {{ name }}</h1>
-	<a href="{{ url_for('auth.logout') }}">Logout</a>
-</body>
+<h1>Welcome, {{ name }}</h1>
+<a href="{{ url_for('auth.logout') }}">Logout</a>
 
-</html>
+{% endblock %}

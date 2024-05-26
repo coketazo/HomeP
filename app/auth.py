@@ -27,10 +27,14 @@ def handle_needs_login():
 # 로그인
 @auth.route("/login", methods=["GET", "POST"])
 def login():
-    next = request.form.get("next", url_for("main.index"))
+    next = request.args.get("next", default=url_for("main.index"))
     if request.method == "POST":
+        # form_dict = request.form.to_dict()
+        # print(form_dict)
         email = request.form.get("email")
         password = request.form.get("password")
+        next = request.form.get("next", default=next)
+
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
             login_user(user)
@@ -44,15 +48,17 @@ def login():
 # 회원가입
 @auth.route("/register", methods=["GET", "POST"])
 def register():
+    next = request.args.get("next", default=url_for("main.index"))
     if request.method == "POST":
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
+        next = request.form.get("next", default=next)
 
         user = User.query.filter_by(email=email).first()
         if user:
             flash("이메일이 이미 가입되어있습니다")
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("auth.register", next=next))
 
         # User 생성
         new_user = User(
@@ -66,9 +72,9 @@ def register():
         db.session.commit()
 
         login_user(new_user)
-        return redirect(url_for("main.profile"))
+        return redirect(next)
 
-    return render_template("register.html")
+    return render_template("register.html", next=next)
 
 
 # 로그아웃

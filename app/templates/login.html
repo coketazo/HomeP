@@ -1,32 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login</title>
-	<!-- CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+{% block title %}Login{% endblock %}
 
-<body>
-	<h1>Login</h1>
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	<ul class=flashes>
-		{% for message in messages %}
-		<li>{{ message }}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-	{% endwith %}
-	<form id="loginForm" method="POST" action="{{ url_for('auth.login') }}">
-		<input type="email" name="email" id="email" placeholder="Email" required autocomplete="email">
-		<input type="password" name="password" id="password" placeholder="Password" required
-			autocomplete="current-password">
-		<button type="submit">Login</button>
-	</form>
-	<a href="{{ url_for('auth.register') }}">계정이 없다면, 회원가입하세요</a>
-</body>
+{% block content %}
 
-</html>
+<h1>Login</h1>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+	{% for message in messages %}
+	<li>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<form id="loginForm" method="POST" action="{{ url_for('auth.login') }}" novalidate onsubmit="return validateForm()">
+	<input type="text" name="email" id="email" placeholder="Email" required autocomplete="email">
+	<input type="password" name="password" id="password" placeholder="Password" required
+		autocomplete="current-password">
+	<input type="hidden" name="next" value="{{ next }}">
+	<button type="submit">Login</button>
+</form>
+<p id="errorMessage" style="color: red; display: none;"></p>
+
+<script>
+	function validateForm() {
+		var emailInput = document.getElementById('email');
+		var email = emailInput.value.trim();
+		var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+		if (!emailRegex.test(email)) {
+			document.getElementById('errorMessage').innerText = '올바른 이메일 형식이 아닙니다.';
+			document.getElementById('errorMessage').style.display = 'block';
+			emailInput.focus();
+			return false;
+		}
+		errorMessage.style.display = 'none';
+		return true;
+	}
+</script>
+
+
+<a href="{{ url_for('auth.register', next=next) }}">계정이 없다면, 회원가입하세요</a>
+
+{% endblock %}
